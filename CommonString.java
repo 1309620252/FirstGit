@@ -12,25 +12,24 @@ import java.util.regex.Pattern;
 public class CommonString {
 	public static void findCommon(ArrayList<String> list){
 		ArrayList<String> l = new ArrayList<String>();
-		String temp;
 		for(int i=0;i<list.size();i++){
 			Pattern p = Pattern.compile("(.)\\1*");
 			Matcher m = p.matcher(list.get(i));
 			if(m.find()){
 				l.add(m.group());
 			}
-		Collections.sort(list);
-		if(l.size() == 1){
+		}
+		Collections.sort(l);
+		if(l.size() == 0){
 			System.out.println(l.get(0));
 		}else{
 			for(int j=0;j<l.size()-1;j++){
-				if(l.get(j).length() == l.get(j+1).length()){
-					System.out.println(l.get(j));
+				if(l.get(j).length() == l.get(j+1).length() && l.get(j).charAt(0) < l.get(j+1).charAt(0)){
+					System.out.println(l.get(0));
 				}else{
 					System.out.println(l.get(j));
 				}
 			}
-		}
 		}
 	}
 	public static void main(String[] args) {

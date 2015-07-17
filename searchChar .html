@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+	<head>
+	</head>
+	<body>
+		<script type="text/javascript">
+			window.onload = function(){
+				var str = "SSFSjDSJbJKsSDIeJKLUOIKJiUIO"
+				//var str = "AAAjBBBfCCCdDDD"
+				var res = search(str);
+				alert(res);
+			}
+
+			function search(str){
+				/*将字符串用小写字母分隔开存入数组*/
+				var upper = str.split(/[a-z]/);
+				if(str.charAt(str.length - 1) >= "a" && str.charAt(str.length - 1) <= "z"){
+					upper.length = upper.length - 1;
+				}
+				var lower = str.replace(/[A-Z]/g,"");//将小写字母存入一个字符串中
+				//alert(lower);
+				var result = "";
+				/*遍历数组，看数组中每两项的长度是否大于3*/
+				for(var i = 0; i < upper.length; i++){
+					if(upper[i + 1] !== undefined){
+						if(upper[i].length >= 3 && upper[i + 1].length >=3){
+							result += lower.charAt(i);
+						}
+					}
+				}
+
+				return result;	
+			}
+		</script>
+	</body>
+</html>
